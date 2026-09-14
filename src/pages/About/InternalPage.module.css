@@ -1,0 +1,903 @@
+.pageContainer {
+  width: 100%;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.title {
+  position: relative;
+  z-index: 10;
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.contentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) 5%;
+}
+
+.textSection {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+  text-align: center;
+}
+
+.textBlock {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+.gallerySection {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .gallerySection {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.galleryImageWrapper {
+  width: 100%;
+  overflow: visible;
+  border-radius: 4px;
+}
+
+.galleryImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: auto;
+  transition: transform 0.5s ease;
+}
+
+.galleryCaption {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.galleryImageWrapper:hover .galleryImage {
+  transform: scale(1.02);
+}
+
+/* Specific to Work Page */
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.projectItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .projectItem {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.projectItem:hover {
+  opacity: 0.6;
+}
+
+.projectName {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.projectClient {
+  font-family: var(--font-body);
+  font-style: italic;
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+}
+
+.aboutTransition {
+  width: 100vw;
+  height: 125vh;
+  margin-left: calc(50% - 50vw);
+
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-top: 20vh;
+
+  background: #f9f9f9;
+}
+
+.aboutTransitionImage {
+  position: sticky;
+  top: 20vh;
+  overflow: visible;
+  border-radius: 2px;
+  will-change: width, height;
+}
+
+.aboutTransitionImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.transitionCaption {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+
+  width: max-content;
+  max-width: 90vw;
+
+  margin: 0;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+
+  background: linear-gradient(180deg,
+      #bdbdbd 0%,
+      #6f6f6f 45%,
+      #cfcfcf 70%,
+      #858585 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  white-space: nowrap;
+  pointer-events: none;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+@media (max-width: 768px) {
+  .aboutTransition {
+    height: 55vh;
+    padding-top: 10vh;
+  }
+
+  .aboutTransitionImage img {
+    object-fit: contain;
+  }
+
+  .transitionCaption {
+    top: calc(100% + 10px);
+    max-width: 90vw;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    white-space: normal;
+  }
+
+  .servicesIntro {
+    margin-top: 8vh;
+    margin-bottom: 8vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .servicesIntro p {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .servicesButton {
+    padding: 12px 24px;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+.servicesIntro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 8vh;
+  margin-bottom: 12vh;
+
+  text-align: center;
+}
+
+.servicesIntro p {
+  margin: 0 0 24px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 1.5px;
+
+  color: #555;
+}
+
+.servicesButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 13px 28px;
+
+  border: 1px solid #222;
+
+  color: #222;
+  background: transparent;
+
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.servicesButton:hover {
+  background: #222;
+  color: #fff;
+}
+
+/* ==========================================
+   SERVIÇOS — PROJETOS
+========================================== */
+
+.workProjects {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 0 5% 10vh;
+
+  box-sizing: border-box;
+}
+
+
+/* ==========================================
+   PROJETO
+========================================== */
+
+.workProject {
+  width: 100%;
+
+  margin-bottom: 12vh;
+
+  padding-bottom: 8vh;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==========================================
+   VÍDEO
+========================================== */
+
+.workVideoWrapper {
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: #000;
+}
+
+
+.workVideo {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ==========================================
+   INFORMAÇÕES DO PROJETO
+========================================== */
+
+.workProjectInfo {
+  display: grid;
+
+  grid-template-columns: 1fr auto;
+
+  column-gap: 40px;
+
+  padding-top: 28px;
+}
+
+
+.workProjectMain {
+  min-width: 0;
+}
+
+
+.workProjectClient {
+  margin: 0;
+
+  font-family: var(--font-heading);
+
+  font-size: clamp(2rem, 4vw, 3.5rem);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0.5px;
+
+  color: var(--color-text);
+}
+
+
+.workProjectService {
+  margin: 12px 0 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 1.1rem;
+
+  font-style: italic;
+
+  color: #666;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ==========================================
+   LOCAL E ANO
+========================================== */
+
+.workProjectMeta {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 5px;
+
+  padding-top: 5px;
+
+  font-family: var(--font-body);
+
+  font-size: 0.8rem;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: #777;
+}
+
+
+/* ==========================================
+   DESCRIÇÃO
+========================================== */
+
+.workProjectDescription {
+  grid-column: 1 / -1;
+
+  max-width: 650px;
+
+  margin: 30px 0 0;
+
+  font-family: var(--font-body);
+
+  font-size: 0.95rem;
+
+  line-height: 1.7;
+
+  color: #555;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+  .workProjects {
+    padding: 0 20px 2vh;
+  }
+
+
+  .workProject {
+    margin-bottom: 6vh;
+    padding-bottom: 4vh;
+  }
+
+
+  .workVideoWrapper {
+    aspect-ratio: 16 / 10;
+  }
+
+
+  .workProjectInfo {
+    display: flex;
+
+    flex-direction: column;
+
+    padding-top: 22px;
+  }
+
+
+  .workProjectClient {
+    font-size: 2rem;
+  }
+
+
+  .workProjectService {
+    font-size: 1rem;
+
+    margin-top: 10px;
+  }
+
+
+  .workProjectMeta {
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 18px;
+
+    padding-top: 0;
+
+    font-size: 0.7rem;
+  }
+
+
+  .workProjectDescription {
+    margin-top: 22px;
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+  }
+
+}
+
+
+/* Agradecimentos */
+.thanksSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 12vh;
+  padding: 0 5%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.thanksTitle {
+  margin: 0 0 32px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  color: #555;
+}
+
+.thanksList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 32px;
+}
+
+.thanksList span {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #222;
+  transition: opacity 0.3s ease;
+}
+
+.thanksList span:hover {
+  opacity: 0.55;
+}
+
+@media (max-width: 768px) {
+  .thanksSection {
+    margin-bottom: 8vh;
+    padding: 0 20px;
+  }
+
+  .thanksTitle {
+    margin-bottom: 24px;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+  }
+
+  .thanksList {
+    gap: 12px 20px;
+  }
+
+  .thanksList span {
+    font-size: 0.95rem;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* ==========================================
+   CONTEXT — SHOWCASE
+========================================== */
+
+.contextPage {
+  width: 100%;
+  background: var(--color-bg);
+  min-height: 100vh;
+  padding-bottom: 12vh;
+}
+
+.contextTitle {
+  margin: 0;
+  padding: 12vh 5% 10vh;
+
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: var(--color-text);
+}
+
+.contextItems {
+  width: 100%;
+}
+
+.contextItem {
+  width: 100%;
+  min-height: 70vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================
+   MÍDIA
+========================================== */
+
+.contextMedia {
+  width: 100%;
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5vw;
+
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.contextVideo {
+  width: auto !important;
+  height: 70% !important;
+  max-width: 70%;
+  object-fit: contain;
+}
+
+.contextMedia video,
+.contextMedia img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* ==========================================
+   INFORMAÇÕES
+========================================== */
+
+.contextInfo {
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 6vw;
+
+  box-sizing: border-box;
+}
+
+.contextNumber {
+  margin-bottom: 30px;
+
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+
+  color: #777;
+}
+
+.contextInfo h2 {
+  margin: 0 0 28px;
+
+  max-width: 600px;
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 1px;
+
+  color: var(--color-text);
+}
+
+.contextInfo p {
+  margin: 0;
+
+  max-width: 520px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+
+  color: #555;
+}
+
+/* ==========================================
+   ALTERNÂNCIA
+========================================== */
+
+.contextMediaRight {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.contextInfoLeft {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+  .contextPage {
+    padding-bottom: 2vh;
+  }
+
+  .contextTitle {
+    padding: 8vh 20px 7vh;
+
+    font-size: clamp(2.8rem, 13vw, 5rem);
+    letter-spacing: 1px;
+  }
+
+  .contextItem {
+    min-height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .contextMedia {
+    order: 1;
+
+    width: 100%;
+    min-height: auto;
+
+    padding: 30px 20px;
+  }
+
+  .contextVideo {
+    width: auto !important;
+    height: 75% !important;
+    max-width: 85%;
+  }
+
+  .contextMedia video,
+  .contextMedia img {
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  .contextInfo {
+    order: 2;
+
+    min-height: auto;
+
+    padding: 50px 20px 70px;
+  }
+
+  .contextInfo h2 {
+    margin-bottom: 20px;
+
+    font-size: clamp(2.2rem, 10vw, 4rem);
+  }
+
+  .contextInfo p {
+    max-width: 100%;
+
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .contextNumber {
+    margin-bottom: 20px;
+  }
+
+  /*
+    No mobile, removemos a alternância
+    para manter mídia → texto em todos.
+  */
+
+  .contextMediaRight,
+  .contextInfoLeft {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* ==========================================
+   CONTEXT — INTRO
+========================================== */
+
+.contextIntro {
+  width: 100%;
+  padding: 10vh 8vw 12vh;
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+
+.contextIntroLabel {
+  display: block;
+  margin-bottom: 35px;
+
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  color: #777;
+}
+
+.contextIntro h2 {
+  margin: 0 0 45px;
+
+  max-width: 900px;
+
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: var(--color-text);
+}
+
+.contextIntro p {
+  max-width: 750px;
+  margin: 0 0 18px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .contextIntro {
+    padding: 8vh 20px 9vh;
+  }
+
+  .contextIntroLabel {
+    margin-bottom: 25px;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+  }
+
+  .contextIntro h2 {
+    margin-bottom: 30px;
+    font-size: clamp(2.8rem, 12vw, 5rem);
+  }
+
+  .contextIntro p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.aboutPanorama {
+  width: 100%;
+  margin: 80px 0 120px;
+}

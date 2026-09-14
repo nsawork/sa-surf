@@ -1,0 +1,130 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  padding: var(--spacing-md) 5%;
+  transition: all 0.4s ease;
+  background-color: transparent;
+}
+
+.header.scrolled {
+  background-color: rgba(235, 235, 235, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: var(--spacing-sm) 5%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .header.scrolled {
+    background-color: rgba(26, 26, 26, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 42px;
+  z-index: 60;
+  text-decoration: none;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: 38px;
+  max-width: 120px;
+  object-fit: contain;
+}
+
+.desktopNav {
+  display: none;
+  gap: var(--spacing-md);
+}
+
+.navLink {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.menuButton {
+  display: flex;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 60;
+}
+
+@media (min-width: 1024px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+}
+
+/* Mobile Menu */
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md) 5%;
+}
+
+.mobileMenuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.mobileNavLink {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.desktopCloseButton {
+  background: none;
+  border: none;
+  color: #222;
+  cursor: pointer;
+  align-self: flex-end;
+  padding: 5px;
+}

@@ -1,0 +1,405 @@
+.home {
+  position: relative;
+  width: 100%;
+  background: transparent;
+}
+
+.videoSequence {
+  position: relative;
+  width: 100%;
+  height: 135vh;
+  background: transparent;
+}
+
+
+/* ==========================================
+   STAGE DOS VÍDEOS
+========================================== */
+
+.stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: #000;
+
+  z-index: 0;
+}
+
+
+/* ==========================================
+   VÍDEOS
+========================================== */
+
+.video {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+
+  background: #000;
+
+  will-change: opacity;
+
+  transition: none;
+}
+
+
+/* ==========================================
+   ESCURECIMENTO
+========================================== */
+
+.overlay {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  pointer-events: none;
+
+  z-index: 5;
+}
+
+
+/* ==========================================
+   TEXTOS
+========================================== */
+
+.textLayer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 2rem;
+
+  text-align: center;
+
+  pointer-events: none;
+
+  will-change: opacity;
+}
+
+
+.textLayer h1 {
+  margin: 0;
+
+  font-family: var(--font-heading);
+
+  font-size: clamp(2.5rem, 6vw, 6rem);
+
+  font-weight: 700;
+
+  line-height: 0.95;
+
+  letter-spacing: 4px;
+
+  color: #fff;
+
+  text-transform: uppercase;
+
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ==========================================
+   CARDS
+========================================== */
+
+.editorialOverlay {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6vh;
+
+  padding: 8vh 8vw 5vh;
+
+  box-sizing: border-box;
+
+  z-index: 10;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.editorialLink {
+  display: block;
+
+  width: 65vw;
+  max-width: 900px;
+
+  height: 50vh;
+  max-height: 600px;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+/* ==========================================
+   IMAGEM DO CARD
+========================================== */
+
+.editorialImageWrapper {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+.editorialImage {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+
+  transition:
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.editorialLink:hover .editorialImage {
+  transform: scale(1.06);
+}
+
+
+/* ==========================================
+   OVERLAY DOS CARDS
+========================================== */
+
+.editorialImageOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  transition: background 0.5s ease;
+}
+
+
+.editorialLink:hover .editorialImageOverlay {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+
+/* ==========================================
+   TEXTO DOS CARDS
+========================================== */
+
+.editorialLabel {
+  position: relative;
+
+  z-index: 10;
+
+  margin: 0;
+
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+
+  font-size: clamp(1.8rem, 3vw, 3rem);
+
+  font-weight: 400;
+
+  font-style: italic;
+
+  line-height: 1;
+
+  color: #fff;
+
+  letter-spacing: 1px;
+
+  text-transform: none;
+
+  text-align: center;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.45);
+
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: geometricPrecision;
+}
+
+
+/* ==========================================
+   LOGO SA.SURF
+========================================== */
+
+.homeLogo {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 15;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+
+  font-size: clamp(2.8rem, 7vw, 6rem);
+
+  font-weight: 500;
+
+  font-style: italic;
+
+  letter-spacing: -1px;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.8),
+    0 0 25px rgba(255, 255, 255, 0.45),
+    0 0 55px rgba(255, 255, 255, 0.2);
+
+  pointer-events: none;
+
+  will-change: opacity;
+}
+
+
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+  .home {
+    min-height: 170vh;
+  }
+
+  .videoSequence {
+    height: 105vh;
+  }
+
+  /* ==============================
+     CARDS MOBILE
+  ============================== */
+
+  .editorialOverlay {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 10vh 20px 10vh;
+
+    box-sizing: border-box;
+  }
+
+  .editorialLink {
+    width: 92vw;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    flex-shrink: 0;
+  }
+
+  .editorialImageWrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .editorialImage {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: none;
+
+    object-fit: contain;
+  }
+
+  .editorialLabel {
+    position: absolute;
+    z-index: 10;
+
+    left: 0;
+    right: 0;
+    bottom: 50%;
+
+    width: 100%;
+
+    margin: 0;
+
+    font-size: 1.7rem;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.5px;
+
+    text-align: center;
+    transform: translateY(50%);
+
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  }
+
+  .textLayer h1 {
+    font-size: clamp(2rem, 9vw, 4rem);
+    letter-spacing: 2px;
+  }
+
+  /* ==============================
+     LOGO MOBILE
+  ============================== */
+
+  .homeLogo {
+    font-size: clamp(2.8rem, 12vw, 5rem);
+  }
+}

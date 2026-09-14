@@ -1,0 +1,247 @@
+.footer {
+  position: relative;
+  z-index: 10;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container {
+  width: calc(100% - 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   TOPO
+========================================== */
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .topSection {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.email {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================
+   REDES SOCIAIS
+========================================== */
+
+.socials {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.socialLink {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   PARTE INFERIOR
+========================================== */
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bottomSection {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.copyright {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   HOME
+========================================== */
+
+.homeFooter .logo,
+.homeFooter .email,
+.homeFooter .socialLink,
+.homeFooter .copyright {
+  color: #fff;
+}
+
+.homeFooter {
+  color: #fff;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+.homeFooter .topSection {
+  margin-bottom: 0.5rem;
+}
+
+
+
+/* ==========================================
+   TABLET / IPAD
+========================================== */
+
+@media (min-width: 768px) and (max-width: 1100px) {
+
+  .container {
+    width: calc(100% - 5rem);
+    max-width: 900px;
+  }
+
+  .footer {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .homeFooter {
+    padding-bottom: 40px;
+  }
+
+  .topSection {
+    gap: 1.25rem;
+  }
+
+  .logo {
+    font-size: 2.2rem;
+  }
+
+  .email {
+    font-size: 1.05rem;
+  }
+
+  .socials {
+    gap: 1.25rem;
+  }
+}
+
+/* ==========================================
+   CELULAR
+========================================== */
+
+@media (max-width: 767px) {
+
+  .footer {
+    width: 100%;
+    padding: 1.5rem 1.25rem 1rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .topSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .brand {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    margin-bottom: 0.4rem;
+    font-size: 2rem;
+  }
+
+  .email {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .socials {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .socialLink {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .bottomSection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+
+  .copyright {
+    width: 100%;
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .homeFooter {
+    padding-bottom: 25px;
+  }
+
+  /* Faz o footer chegar mais rápido após os cards */
+  .homeFooter {
+    margin-top: -70px;
+  }
+}

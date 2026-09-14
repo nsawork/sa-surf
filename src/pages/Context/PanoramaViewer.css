@@ -1,0 +1,337 @@
+.panoramaCardPreview {
+    position: relative;
+    width: 100%;
+    min-height: 430px;
+    overflow: hidden;
+    background: #0b0d0f;
+    isolation: isolate;
+}
+
+.panoramaPlanetViewer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #0b0d0f;
+    transform: scale(1.03);
+}
+
+.panoramaPlanetViewer .psv-container,
+.panoramaPlanetViewer canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.panoramaCardOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 34px;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.22),
+            transparent 35%,
+            rgba(0, 0, 0, 0.48));
+}
+
+.panoramaCardText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.35);
+}
+
+.panoramaCardText span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+}
+
+.panoramaCardText strong {
+    font-size: clamp(42px, 5vw, 76px);
+    font-weight: 300;
+    letter-spacing: -0.08em;
+    line-height: 0.9;
+}
+
+.panoramaOpenButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    min-width: 175px;
+    padding: 15px 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 0;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    cursor: pointer;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+
+    pointer-events: auto;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s ease;
+}
+
+.panoramaOpenButton:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #111;
+    transform: translateY(-4px);
+}
+
+.panoramaOpenArrow {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    transition: transform 0.35s ease;
+}
+
+.panoramaOpenButton:hover .panoramaOpenArrow {
+    transform: translate(3px, -3px);
+}
+
+/* Modal */
+
+.panoramaModal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    animation: panoramaFadeIn 0.35s ease forwards;
+}
+
+.panoramaModalBackdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: rgba(3, 5, 8, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    cursor: default;
+}
+
+.panoramaModalContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: min(1440px, 100%);
+    height: min(850px, 92vh);
+    overflow: hidden;
+    background: #0b0d0f;
+    box-shadow: 0 35px 120px rgba(0, 0, 0, 0.55);
+    animation: panoramaZoomIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.panoramaModalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 28px;
+    background: #0b0d0f;
+    color: #fff;
+}
+
+.panoramaModalLabel {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+}
+
+.panoramaModalHeader h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+}
+
+.panoramaCloseButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 1;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.panoramaCloseButton:hover {
+    background: #fff;
+    color: #111;
+    transform: rotate(90deg);
+}
+
+.panoramaViewerArea {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    background: #050607;
+}
+
+.panoramaViewerArea .psv-container,
+.panoramaViewerArea canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.panoramaModalFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 13px 20px;
+    background: #0b0d0f;
+    color: rgba(255, 255, 255, 0.43);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Animações */
+
+@keyframes panoramaFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes panoramaZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.86);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .panoramaCardPreview {
+        min-height: 380px;
+    }
+
+    .panoramaCardOverlay {
+        padding: 26px;
+    }
+
+    .panoramaModal {
+        padding: 15px;
+    }
+
+    .panoramaModalContent {
+        height: min(800px, 94vh);
+    }
+}
+
+/* Celular */
+
+@media (max-width: 600px) {
+    .panoramaCardPreview {
+        min-height: 330px;
+    }
+
+    .panoramaCardOverlay {
+        padding: 22px;
+    }
+
+    .panoramaCardText strong {
+        font-size: 58px;
+    }
+
+    .panoramaOpenButton {
+        min-width: 155px;
+        padding: 13px 15px;
+        font-size: 9px;
+    }
+
+    .panoramaModal {
+        padding: 0;
+    }
+
+    .panoramaModalContent {
+        width: 100%;
+        height: 100%;
+        max-height: none;
+    }
+
+    .panoramaModalHeader {
+        padding: 18px;
+    }
+
+    .panoramaModalHeader h2 {
+        font-size: 20px;
+    }
+
+    .panoramaCloseButton {
+        width: 38px;
+        height: 38px;
+        font-size: 25px;
+    }
+
+    .panoramaModalFooter {
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px;
+        font-size: 8px;
+    }
+}
