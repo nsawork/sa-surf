@@ -69,10 +69,9 @@ const Context: React.FC = () => {
               {item.type === 'video' ? (
                 <video
                   src={item.media}
-                  autoPlay
-                  muted
-                  loop
+                  controls
                   playsInline
+                  preload="metadata"
                   className={styles.contextVideo}
                 />
               ) : item.type === 'panorama' ? (

@@ -15,16 +15,6 @@
   --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1a1a1a;
-    --color-text: #e0e0e0;
-    --color-text-muted: rgba(224, 224, 224, 0.64);
-    --color-text-light: #111111;
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -115,6 +105,4 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
-  width: 0;
-  height: 0;
 }

@@ -100,11 +100,8 @@ const Work: React.FC = () => {
                 <video
                   className={styles.workVideo}
                   src={project.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
                   controls
+                  playsInline
                   preload="metadata"
                 />
 
