@@ -1,5 +1,6 @@
 import video1 from "../assets/videos/italot.mov";
 import imagemSobre from "../assets/4koriginal3.jpeg";
+import imagemSobre2 from "../assets/4koriginal2.jpg";
 import imagemMundo from "../assets/aveoriginal.jpeg";
 import imagemItalo from "../assets/atalho.jpeg";
 import videoinicio from "../assets/videos/nessevai.mp4";
@@ -79,7 +80,7 @@ export const content = {
   pages: {
     about: {
       title: "SA SURF",
-      heroImage: "/src/assets/4koriginal3.jpeg",
+      heroImage: imagemSobre,
 
       textBlocks: [
         "A Sa.Surf é especializada em captação de imagens aéreas através de drones da DJI, criando conteúdo visual para marcas, atletas, empresas e projetos.",
@@ -95,11 +96,11 @@ export const content = {
 
       gallery: [
         {
-          image: "/src/assets/4koriginal2.jpg",
+          image: imagemSobre2,
           caption: "Saquarema, RJ - Tenda RedBull"
         },
         {
-          image: "/src/assets/4koriginal3.jpeg",
+          image: imagemSobre,
           caption: "Saquarema, RJ - Ítalo Ferreira - Surfista"
         }
       ]
