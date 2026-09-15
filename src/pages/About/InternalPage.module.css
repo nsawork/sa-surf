@@ -839,39 +839,32 @@
 .contextIntroLabel {
   display: block;
   margin-bottom: 35px;
-
   font-family: var(--font-body);
   font-size: 0.7rem;
   letter-spacing: 4px;
   text-transform: uppercase;
-
   color: #777;
 }
 
 .contextIntro h2 {
   margin: 0 0 45px;
-
   max-width: 900px;
-
   font-family: var(--font-heading);
   font-size: clamp(3rem, 6vw, 7rem);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: 1px;
   text-transform: uppercase;
-
   color: var(--color-text);
 }
 
 .contextIntro p {
   max-width: 750px;
   margin: 0 0 18px;
-
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1rem, 1.35vw, 1.2rem);
   line-height: 1.7;
   letter-spacing: 0.3px;
-
   color: #555;
 }
 
@@ -900,4 +893,30 @@
 .aboutPanorama {
   width: 100%;
   margin: 80px 0 120px;
+}
+
+/* ==========================================
+   IPHONE — HERO ATÉ A SAFE AREA
+========================================== */
+
+@media (max-width: 768px) {
+  .pageContainer {
+    position: relative;
+    background-color: var(--color-bg);
+  }
+
+  .heroWrapper {
+    position: relative;
+    z-index: 1;
+    height: 60dvh;
+    min-height: 60dvh;
+  }
+
+  .heroImage {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
