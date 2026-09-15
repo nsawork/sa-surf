@@ -1,10 +1,13 @@
 .layout-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 100dvh;
+  background: transparent;
 }
 
 .main-content {
   flex: 1;
   width: 100%;
+  min-width: 0;
 }

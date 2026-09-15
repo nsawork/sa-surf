@@ -31,6 +31,16 @@ const Layout: React.FC = () => {
 
     animationFrame = requestAnimationFrame(raf);
 
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.dispatchEvent(new Event('resize'));
+
+        if (window.visualViewport) {
+          window.visualViewport.dispatchEvent(new Event('resize'));
+        }
+      });
+    });
+
     return () => {
       cancelAnimationFrame(animationFrame);
       lenis.destroy();
