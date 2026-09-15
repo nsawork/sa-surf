@@ -5,6 +5,9 @@ import styles from './Home.module.css';
 
 const ScrollSequence: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -37,6 +40,53 @@ const ScrollSequence: React.FC = () => {
     return () => cancelAnimationFrame(frame);
   }, []);
 
+  // Garante que os vídeos estejam mutados e tenta iniciar a reprodução.
+  useEffect(() => {
+    const videos = [
+      video1Ref.current,
+      video2Ref.current,
+    ];
+
+    const playVideos = async () => {
+      for (const video of videos) {
+        if (!video) continue;
+
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+
+        try {
+          await video.play();
+        } catch (error) {
+          console.warn(
+            'O navegador bloqueou o autoplay deste vídeo:',
+            error
+          );
+        }
+      }
+    };
+
+    playVideos();
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        playVideos();
+      }
+    };
+
+    document.addEventListener(
+      'visibilitychange',
+      handleVisibilityChange
+    );
+
+    return () => {
+      document.removeEventListener(
+        'visibilitychange',
+        handleVisibilityChange
+      );
+    };
+  }, []);
+
   const video1Opacity =
     progress < 0.18
       ? 1
@@ -66,6 +116,7 @@ const ScrollSequence: React.FC = () => {
       <div className={styles.stage}>
 
         <video
+          ref={video1Ref}
           className={styles.video}
           style={{
             opacity: video1Opacity,
@@ -76,6 +127,8 @@ const ScrollSequence: React.FC = () => {
           loop
           playsInline
           preload="auto"
+          disablePictureInPicture
+          controls={false}
         >
           <source
             src={content.home.scrollVideos[0].url}
@@ -84,6 +137,7 @@ const ScrollSequence: React.FC = () => {
         </video>
 
         <video
+          ref={video2Ref}
           className={styles.video}
           style={{
             opacity: video2Opacity,
@@ -94,6 +148,8 @@ const ScrollSequence: React.FC = () => {
           loop
           playsInline
           preload="auto"
+          disablePictureInPicture
+          controls={false}
         >
           <source
             src={content.home.scrollVideos[1].url}
