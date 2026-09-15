@@ -5,8 +5,13 @@
   width: 100%;
   z-index: 50;
   padding: var(--spacing-md) 5%;
-  transition: all 0.4s ease;
-  background-color: transparent;
+  transition: none;
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .header.scrolled {
@@ -68,7 +73,7 @@
   display: flex;
   background: none;
   border: none;
-  color: #fff;
+  color: #e5e5e5;
   cursor: pointer;
   z-index: 60;
 }
@@ -127,4 +132,12 @@
   cursor: pointer;
   align-self: flex-end;
   padding: 5px;
+}
+
+/* HOME — HEADER SEMPRE TRANSPARENTE */
+.header:not(.scrolled) {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
 }

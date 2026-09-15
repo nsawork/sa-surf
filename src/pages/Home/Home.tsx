@@ -19,8 +19,11 @@ const ScrollSequence: React.FC = () => {
       if (section) {
         const rect = section.getBoundingClientRect();
 
+        const viewportHeight =
+          window.visualViewport?.height || window.innerHeight;
+
         const totalDistance =
-          section.offsetHeight - window.innerHeight;
+          section.offsetHeight - viewportHeight;
 
         const scrolled = Math.max(0, -rect.top);
 

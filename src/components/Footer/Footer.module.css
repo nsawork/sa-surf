@@ -107,7 +107,7 @@
 
 .homeFooter {
   color: #fff;
-  background: transparent;
+  background: transparent !important;
   margin-top: 0;
   padding-top: 0;
   padding-bottom: 20px;
