@@ -15,6 +15,20 @@ const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const closePanorama = () => {
+        setIsOpen(false);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                window.dispatchEvent(new Event('resize'));
+
+                if (window.visualViewport) {
+                    window.visualViewport.dispatchEvent(new Event('resize'));
+                }
+            });
+        });
+    };
+
     useEffect(() => {
         if (!isOpen) return;
 
@@ -23,7 +37,7 @@ const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
 
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
-                setIsOpen(false);
+                closePanorama();
             }
         };
 
@@ -77,7 +91,7 @@ const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
                         type="button"
                         className="panoramaModalBackdrop"
                         aria-label="Fechar panorama"
-                        onClick={() => setIsOpen(false)}
+                        onClick={closePanorama}
                     />
 
                     <div className="panoramaModalContent">
@@ -93,7 +107,7 @@ const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
                             <button
                                 type="button"
                                 className="panoramaCloseButton"
-                                onClick={() => setIsOpen(false)}
+                                onClick={closePanorama}
                                 aria-label="Fechar visualização 360°"
                             >
                                 ×
