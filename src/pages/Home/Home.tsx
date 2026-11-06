@@ -1,38 +1,89 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { content } from '../../data/content';
 import styles from './Home.module.css';
 
-const ScrollSequence: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+// Troca de vídeo: acontece enquanto o topo do primeiro card
+// sobe de 75% até 35% da altura da tela.
+const SWAP_START = 0.75;
+const SWAP_END = 0.35;
+
+// Logo: some entre 3% e 15% de rolagem (em alturas de tela).
+const LOGO_START = 0.03;
+const LOGO_END = 0.15;
+
+const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
+
+// Curva suave (ease-in-out) para a transição não parecer linear.
+const smoothstep = (t: number) => t * t * (3 - 2 * t);
+
+const roundOpacity = (value: number) => Math.round(value * 1000) / 1000;
+
+interface ScrollSequenceProps {
+  cardsRef: React.RefObject<HTMLElement | null>;
+}
+
+const ScrollSequence: React.FC<ScrollSequenceProps> = ({ cardsRef }) => {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
 
-  const [progress, setProgress] = useState(0);
-
+  // Atualiza as opacidades direto no DOM, sem re-render do React.
   useEffect(() => {
     let frame = 0;
+    let lastVideoOpacity = -1;
+    let lastLogoOpacity = -1;
+
+    // A altura da tela só é recalculada quando a largura muda
+    // (rotação) ou a altura muda muito. Assim a barra de endereço
+    // do celular aparecendo/sumindo não faz a transição pular.
+    let viewportWidth = window.innerWidth;
+    let viewportHeight = window.innerHeight;
+
+    const handleResize = () => {
+      if (
+        window.innerWidth !== viewportWidth ||
+        Math.abs(window.innerHeight - viewportHeight) > 150
+      ) {
+        viewportWidth = window.innerWidth;
+        viewportHeight = window.innerHeight;
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
 
     const update = () => {
-      const section = sectionRef.current;
+      const firstCard = cardsRef.current?.firstElementChild;
 
-      if (section) {
-        const rect = section.getBoundingClientRect();
+      if (firstCard && video1Ref.current) {
+        const cardTop =
+          firstCard.getBoundingClientRect().top / viewportHeight;
 
-        const viewportHeight =
-          window.visualViewport?.height || window.innerHeight;
+        const swap = smoothstep(
+          clamp01((SWAP_START - cardTop) / (SWAP_START - SWAP_END))
+        );
 
-        const totalDistance =
-          section.offsetHeight - viewportHeight;
+        const videoOpacity = roundOpacity(1 - swap);
 
-        const scrolled = Math.max(0, -rect.top);
+        if (videoOpacity !== lastVideoOpacity) {
+          video1Ref.current.style.opacity = String(videoOpacity);
+          lastVideoOpacity = videoOpacity;
+        }
+      }
 
-        const value =
-          totalDistance > 0
-            ? Math.min(1, scrolled / totalDistance)
-            : 0;
+      if (logoRef.current) {
+        const scrolled = window.scrollY / viewportHeight;
 
-        setProgress(value);
+        const logoOpacity = roundOpacity(
+          1 - smoothstep(
+            clamp01((scrolled - LOGO_START) / (LOGO_END - LOGO_START))
+          )
+        );
+
+        if (logoOpacity !== lastLogoOpacity) {
+          logoRef.current.style.opacity = String(logoOpacity);
+          lastLogoOpacity = logoOpacity;
+        }
       }
 
       frame = requestAnimationFrame(update);
@@ -40,8 +91,11 @@ const ScrollSequence: React.FC = () => {
 
     frame = requestAnimationFrame(update);
 
-    return () => cancelAnimationFrame(frame);
-  }, []);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [cardsRef]);
 
   // Garante que os vídeos estejam mutados e tenta iniciar a reprodução.
   useEffect(() => {
@@ -90,39 +144,16 @@ const ScrollSequence: React.FC = () => {
     };
   }, []);
 
-  const video1Opacity =
-    progress < 0.18
-      ? 1
-      : progress < 0.38
-        ? 1 - (progress - 0.18) / 0.20
-        : 0;
-
-  const video2Opacity =
-    progress < 0.18
-      ? 0
-      : progress < 0.38
-        ? (progress - 0.18) / 0.20
-        : 1;
-
-  const logoOpacity =
-    progress < 0.08
-      ? 1
-      : progress < 0.16
-        ? 1 - (progress - 0.08) / 0.08
-        : 0;
-
+  // O vídeo 2 fica sempre visível por baixo; só o vídeo 1
+  // some/volta por cima dele, sem escurecer no meio da troca.
   return (
-    <section
-      ref={sectionRef}
-      className={styles.videoSequence}
-    >
+    <section className={styles.videoSequence}>
       <div className={styles.stage}>
 
         <video
           ref={video1Ref}
           className={styles.video}
           style={{
-            opacity: video1Opacity,
             zIndex: 2,
           }}
           autoPlay
@@ -143,7 +174,6 @@ const ScrollSequence: React.FC = () => {
           ref={video2Ref}
           className={styles.video}
           style={{
-            opacity: video2Opacity,
             zIndex: 1,
           }}
           autoPlay
@@ -163,10 +193,8 @@ const ScrollSequence: React.FC = () => {
         <div className={styles.overlay} />
 
         <div
+          ref={logoRef}
           className={styles.homeLogo}
-          style={{
-            opacity: logoOpacity,
-          }}
         >
           Sa Surf
         </div>
@@ -178,12 +206,17 @@ const ScrollSequence: React.FC = () => {
 
 
 const Home: React.FC = () => {
+  const cardsRef = useRef<HTMLElement>(null);
+
   return (
     <main className={styles.home}>
 
-      <ScrollSequence />
+      <ScrollSequence cardsRef={cardsRef} />
 
-      <section className={styles.editorialOverlay}>
+      <section
+        ref={cardsRef}
+        className={styles.editorialOverlay}
+      >
         {content.home.editorialNav.map((item) => (
           <Link
             key={item.id}
