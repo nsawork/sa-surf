@@ -62,59 +62,76 @@
     line-height: 0.9;
 }
 
+/* Botão "Ver em 360°": pílula de vidro com o ícone num círculo branco,
+   texto em Cormorant itálico como os títulos dos cards. */
 .panoramaOpenButton {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 35px;
-    min-width: 175px;
-    padding: 15px 18px;
+    gap: 14px;
+    padding: 6px 24px 6px 6px;
 
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 0;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 
     cursor: pointer;
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: 17px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    text-transform: uppercase;
 
     pointer-events: auto;
 
     transition:
-        background 0.35s ease,
-        color 0.35s ease,
-        border-color 0.35s ease,
-        transform 0.35s ease;
+        background 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .panoramaOpenButton:hover {
     border-color: #fff;
     background: #fff;
     color: #111;
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
 
-.panoramaOpenArrow {
-    font-family: Arial, sans-serif;
-    font-size: 17px;
-    font-weight: 300;
+.panoramaOpenIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    color: #111;
+    transition:
+        background 0.4s ease,
+        color 0.4s ease,
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panoramaOpenButton:hover .panoramaOpenIcon {
+    background: #111;
+    color: #fff;
+    transform: rotate(180deg);
+}
+
+.panoramaOpenLabel {
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     line-height: 1;
-    letter-spacing: 0;
-    transition: transform 0.35s ease;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
-.panoramaOpenButton:hover .panoramaOpenArrow {
-    transform: translate(3px, -3px);
+.panoramaOpenButton:hover .panoramaOpenLabel {
+    text-shadow: none;
 }
 
 /* Modal */
@@ -182,31 +199,43 @@
     letter-spacing: -0.04em;
 }
 
+/* Botão fechar: pílula fina com X e "Fechar" (só o X no celular). */
 .panoramaCloseButton {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
+    gap: 10px;
     height: 42px;
+    padding: 0 18px 0 14px;
     flex-shrink: 0;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 50%;
-    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
     color: #fff;
     cursor: pointer;
-    font-family: inherit;
-    font-size: 28px;
-    font-weight: 200;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
     line-height: 1;
+    text-transform: uppercase;
     transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.3s ease;
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.panoramaCloseButton svg {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .panoramaCloseButton:hover {
+    border-color: #fff;
     background: #fff;
     color: #111;
+}
+
+.panoramaCloseButton:hover svg {
     transform: rotate(90deg);
 }
 
@@ -299,9 +328,17 @@
     }
 
     .panoramaOpenButton {
-        min-width: 155px;
-        padding: 13px 15px;
-        font-size: 9px;
+        gap: 12px;
+        padding: 5px 20px 5px 5px;
+    }
+
+    .panoramaOpenIcon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .panoramaOpenLabel {
+        font-size: 18px;
     }
 
     .panoramaModal {
@@ -323,9 +360,13 @@
     }
 
     .panoramaCloseButton {
-        width: 38px;
-        height: 38px;
-        font-size: 25px;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+    }
+
+    .panoramaCloseLabel {
+        display: none;
     }
 
     .panoramaModalFooter {

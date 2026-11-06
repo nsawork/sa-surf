@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { content } from '../../data/content';
 import styles from '../About/InternalPage.module.css';
 import PanoramaViewer from '../Context/PanoramaViewer';
+import ProjectVideo from '../../components/ProjectVideo/ProjectVideo';
 
 const Work: React.FC = () => {
   const data = content.pages.work;
@@ -95,17 +96,11 @@ const Work: React.FC = () => {
 
             ) : project.video ? (
 
-              <div className={styles.workVideoWrapper}>
-
-                <video
-                  className={styles.workVideo}
-                  src={project.video}
-                  controls
-                  playsInline
-                  preload="metadata"
-                />
-
-              </div>
+              <ProjectVideo
+                src={project.video}
+                poster={project.poster}
+                vertical={project.vertical}
+              />
 
             ) : null}
 

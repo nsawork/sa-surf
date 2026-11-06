@@ -1,25 +1,42 @@
 import video1 from "../assets/videos/italot.mov";
+import video1Poster from "../assets/videos/posters/italot.jpg";
 import imagemSobre from "../assets/4koriginal3.jpeg";
 import imagemSobre2 from "../assets/4koriginal2.jpg";
 import imagemMundo from "../assets/aveoriginal.jpeg";
 import imagemItalo from "../assets/atalho.jpeg";
 import videoinicio from "../assets/videos/nessevai.mp4";
 import video5seg from "../assets/videos/video5seg.mov";
+import video5segPoster from "../assets/videos/posters/video5seg.jpg";
 import oficialgym from "../assets/videos/oficialgym.mov";
+import oficialgymPoster from "../assets/videos/posters/oficialgym.jpg";
 import framevideo from "../assets/videos/framevideo1.mov";
+import framevideoPoster from "../assets/videos/posters/framevideo1.jpg";
 import movimento from "../assets/videos/movimentos.mov";
+import movimentoPoster from "../assets/videos/posters/movimentos.jpg";
 import itaguare from "../assets/videos/videoitaguare.mp4";
+import itaguarePoster from "../assets/videos/posters/videoitaguare.jpg";
 import videoia from "../assets/videos/videoia.mov";
+import videoiaPoster from "../assets/videos/posters/videoia.jpg";
 import imoveis from "../assets/videos/imoveis.mov";
+import imoveisPoster from "../assets/videos/posters/imoveis.jpg";
 import videoclipe from "../assets/videos/videoclipe.mov";
+import videoclipePoster from "../assets/videos/posters/videoclipe.jpg";
 import videoclipe2 from "../assets/videos/videoclipe2.mov";
+import videoclipe2Poster from "../assets/videos/posters/videoclipe2.jpg";
 import videoarmadilha from "../assets/videos/videoarmadilha.mp4";
+import videoarmadilhaPoster from "../assets/videos/posters/videoarmadilha.jpg";
 import videosurfando from "../assets/videos/surfando.mov";
+import videosurfandoPoster from "../assets/videos/posters/surfando.jpg";
 import surfando from "../assets/videos/surfando2.mov";
+import surfandoPoster from "../assets/videos/posters/surfando2.jpg";
 import surfando3 from "../assets/videos/surfando3.mov";
+import surfando3Poster from "../assets/videos/posters/surfando3.jpg";
 import oultimo from "../assets/videos/oultimo.mp4";
+import oultimoPoster from "../assets/videos/posters/oultimo.jpg";
 import selocovai from "../assets/videos/selocovai.mp4";
+import selocovaiPoster from "../assets/videos/posters/selocovai.jpg";
 import thiagao from "../assets/videos/thiagao.mp4";
+import thiagaoPoster from "../assets/videos/posters/thiagao.jpg";
 
 export const content = {
   global: {
@@ -34,7 +51,7 @@ export const content = {
     logoText: "Sa.Surf",
     navLinks: [
       { label: "inicio", path: "/" },
-      { label: "sobre", path: "/about" },
+      { label: "SA SURF", path: "/about" },
       { label: "Projetos", path: "/context" },
       { label: "Serviços", path: "/work" },
 
@@ -59,7 +76,7 @@ export const content = {
     editorialNav: [
       {
         id: "about",
-        label: "SOBRE",
+        label: "SA SURF",
         path: "/about",
         image: imagemSobre
       },
@@ -115,6 +132,7 @@ export const content = {
           description:
             "Registro de um momento espontâneo durante a espera por uma onda. Um pássaro atravessa o enquadramento, criando uma composição inesperada e visualmente marcante.",
           media: framevideo,
+          poster: framevideoPoster,
           type: "video",
         },
         {
@@ -141,6 +159,7 @@ export const content = {
           description:
             "Saquarema, RJ — Captação aérea de um atleta de surf em movimento, explorando um enquadramento dinâmico com a Igreja de Itaúna ao fundo.",
           media: video1,
+          poster: video1Poster,
           type: "video",
         },
         {
@@ -167,6 +186,8 @@ export const content = {
           description:
             "Itaguare, São Paulo — Captação e edição de vídeo aéreo desenvolvidas para formatos verticais, ideais para Instagram Reels e TikTok. O projeto combina imagens de drone, enquadramento dinâmico e edição direcionada às redes sociais, valorizando o cenário e a experiência visual.",
           media: itaguare,
+          poster: itaguarePoster,
+          vertical: true,
           type: "video",
         },
         {
@@ -175,6 +196,7 @@ export const content = {
           description:
             "Registro de um aéreo durante uma sessão de surf com edição, acompanhado em câmera lenta para destacar a precisão do movimento e a fluidez da manobra com detalhes. O vídeo foi criado e aprimorado com inteligência artificial utilizando a Higgsfield AI, você pode garantir o seu.",
           media: selocovai,
+          poster: selocovaiPoster,
           type: "video",
         },
 
@@ -184,6 +206,7 @@ export const content = {
           description:
             "Demonstração de recursos de voo automatizado do drone, incluindo órbita ao redor do objeto, ascensão vertical e acompanhamento inteligente de uma pessoa em movimento.",
           media: movimento,
+          poster: movimentoPoster,
           type: "video",
         },
 
@@ -193,6 +216,7 @@ export const content = {
           description:
             "Captação interna para imobiliária mostrando a integração entre os ambientes do apartamento e a vista para o mar, conduzindo o espectador do quarto à sala e, em seguida, diretamente à praia.",
           media: imoveis,
+          poster: imoveisPoster,
           type: "video",
         },
 
@@ -202,6 +226,7 @@ export const content = {
           description:
             "Para a marca @_armadilha, captação aérea e linguagem visual desenvolvida para integrar a estética e a identidade do projeto musical.",
           media: videoclipe2,
+          poster: videoclipe2Poster,
           type: "video",
         },
 
@@ -211,6 +236,8 @@ export const content = {
           description:
             "Produção para videoclipe.",
           media: videoclipe,
+          poster: videoclipePoster,
+          vertical: true,
           type: "video",
         },
 
@@ -229,6 +256,7 @@ export const content = {
           description:
             "OficialGYM — Transição cinematográfica entre uma perspectiva global da Terra e a identidade visual da academia. O projeto explora recursos de composição, movimento e transformação para apresentar onde a academia fica localizada de forma impactante e contemporânea.",
           media: videoia,
+          poster: videoiaPoster,
           type: "video",
         },
 
@@ -238,6 +266,8 @@ export const content = {
           description:
             "Produção aérea em formato timelapse, registrando a transição do dia para a noite. ",
           media: video5seg,
+          poster: video5segPoster,
+          vertical: true,
           type: "video",
         },
 
@@ -258,6 +288,7 @@ export const content = {
           description:
             "Produção de imagens aéreas para a divulgação da OficialGYM, explorando diferentes perspectivas e enquadramentos para valorizar o espaço e sua identidade visual. O projeto combina captação com drone, recursos de inteligência artificial e uma edição audiovisual desenvolvida para integrar ritmo, transições e trilha sonora, criando um conteúdo dinâmico e alinhado à comunicação da marca.",
           video: oficialgym,
+          poster: oficialgymPoster,
         },
 
         {
@@ -268,6 +299,7 @@ export const content = {
           description:
             "Trabalho desenvolvido em parceria com a empresa @_armadilha e @lucas_minaya com produção e roteiro profissional feita para um videoclipe de um artista local.",
           video: videoarmadilha,
+          poster: videoarmadilhaPoster,
         },
 
         {
@@ -300,6 +332,7 @@ export const content = {
           description:
             "Produção audiovisual voltada à performance de um surfista, combinando captação aérea, diferentes perspectivas e edição dinâmica.",
           video: videosurfando,
+          poster: videosurfandoPoster,
         },
 
         {
@@ -310,6 +343,7 @@ export const content = {
           description:
             "Registro de Performance.",
           video: video1,
+          poster: video1Poster,
         },
 
         {
@@ -320,6 +354,7 @@ export const content = {
           description:
             "Registro de performance",
           video: surfando,
+          poster: surfandoPoster,
         },
 
         {
@@ -330,6 +365,7 @@ export const content = {
           description:
             "Produção audiovisual voltada à performance de um surfista, combinando captação aérea, diferentes perspectivas e edição dinâmica. O projeto explora o movimento, a energia das ondas e a identidade do atleta por meio de uma linguagem visual cinematográfica.",
           video: surfando3,
+          poster: surfando3Poster,
         },
 
         {
@@ -340,6 +376,7 @@ export const content = {
           description:
             "Registro de um aéreo durante uma sessão de surf com edição, acompanhado em câmera lenta para destacar a precisão do movimento e a fluidez da manobra com detalhes. O vídeo foi criado e aprimorado com inteligência artificial utilizando a Higgsfield AI, você pode garantir o seu.",
           video: selocovai,
+          poster: selocovaiPoster,
         },
 
 
@@ -351,6 +388,7 @@ export const content = {
           description:
             "Produção audiovisual voltada à apresentação de um imóvel, combinando captação aérea e imagens internas para valorizar os ambientes, a arquitetura e a localização. O projeto utiliza diferentes perspectivas e movimentos de câmera para criar uma apresentação visual atrativa e destacar a experiência de estar no imóvel.",
           video: imoveis,
+          poster: imoveisPoster,
         },
 
         {
@@ -361,6 +399,8 @@ export const content = {
           description:
             "Produção de Reels para divulgação da academia, com captação de movimentos aéreos com drone e edição dinâmica destacando o atleta e o ambiente.",
           video: thiagao,
+          poster: thiagaoPoster,
+          vertical: true,
         },
 
         {
@@ -371,6 +411,7 @@ export const content = {
           description:
             "Produção audiovisual desenvolvida para uma ação de marketing voltada à divulgação de um evento.",
           video: oultimo,
+          poster: oultimoPoster,
         },
       ],
     },

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ReactPhotoSphereViewer } from 'react-photo-sphere-viewer';
+import { Rotate3d, X } from 'lucide-react';
 
 import '@photo-sphere-viewer/core/index.css';
 import './PanoramaViewer.css';
@@ -79,8 +80,10 @@ const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
                         className="panoramaOpenButton"
                         onClick={() => setIsOpen(true)}
                     >
-                        <span>VER 360°</span>
-                        <span className="panoramaOpenArrow">↗</span>
+                        <span className="panoramaOpenIcon">
+                            <Rotate3d size={18} strokeWidth={1.4} />
+                        </span>
+                        <span className="panoramaOpenLabel">Ver em 360°</span>
                     </button>
                 </div>
             </div>
@@ -110,7 +113,8 @@ const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
                                 onClick={closePanorama}
                                 aria-label="Fechar visualização 360°"
                             >
-                                ×
+                                <X size={18} strokeWidth={1.4} />
+                                <span className="panoramaCloseLabel">Fechar</span>
                             </button>
                         </header>
 
@@ -122,9 +126,9 @@ const PanoramaViewer: React.FC<PanoramaViewerProps> = ({
                                 navbar={['zoom', 'fullscreen']}
                                 defaultYaw={0}
                                 defaultPitch={0}
-                                defaultZoomLvl={42}
+                                defaultZoomLvl={0}
                                 minFov={30}
-                                maxFov={100}
+                                maxFov={110}
                                 moveSpeed={1}
                                 zoomSpeed={1}
                                 moveInertia={true}
